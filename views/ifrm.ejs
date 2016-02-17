@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+<iframe name='frm' id="frm"></iframe>
+<form action='/upload2' enctype="multipart/form-data" method="post" target="frm" id='forms'>
+  <input type="file" name='myfile'>
+  <input type="button" id='sub' value='submit'>
+</form>
+<p id='load' style='display: none'>上传···</p>
+<ul class="list">
+
+</ul>
+<script type="text/javascript" src='javascripts/jquery-1.11.3.js'></script>
+<script type="text/javascript">
+  $(function(){
+    $('#sub').on('click',function(){
+      $('#load').show();
+      $('#forms').get(0).submit();
+    });
+    window.finish=function(name){
+      $('#load').hide();
+      // console.log(name)
+      var str = '<li>'+name;
+      str+='<button class="del '+name+'">删除</button></li>'
+      $('.list').append(str);
+    }
+    $('.del').on('click',function(){
+      
+    })
+  })
+</script>
+  </body>
+</html>
